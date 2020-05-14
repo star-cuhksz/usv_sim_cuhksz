@@ -1,0 +1,458 @@
+<?xml version="1.0"?>
+
+<robot name="sailboat_cuhksz" 
+    xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="PI" value="3.1415926535897931"/>
+
+    <!-- Body properties -->
+    <!-- sail: 5.2413 -->
+    <!-- body mass: 7.7702 -->
+    <xacro:property name="body_mass" value="5"/>
+    <xacro:property name="sail_mass" value="1"/>
+    <xacro:property name="rudder_mass" value="1"/>
+    <xacro:property name="compensation" value="8"/>
+    <xacro:property name="scale" value="0"/>
+
+    <xacro:arg name="windType" default="global" />
+    <xacro:arg name="waterType" default="global" />
+    <xacro:property name="windType" value="$(arg windType)" />
+    <xacro:property name="waterType" value="$(arg waterType)" />
+
+    <!-- Defining sail model -->
+    <link name="base_link">
+        <inertial>
+            <origin xyz="-0.052935 -0.000162 0" rpy="0 0 0" />
+            <mass value="${body_mass}" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="1.4" iyz="0.0" izz="1.4"/>
+            <!-- <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" /> -->
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/base_link_sub.dae" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/base_link_sub.dae" />
+            </geometry>
+        </collision>
+
+        <buoyancy>
+            <compensation>${compensation}</compensation>
+            <origin xyz="-0.052935 -0.000162 0"/>
+            <limit radius="0.1"/>
+            <damping rpy="20 20 20" xyz="20 40 50"/>
+            <windVelocity>${windType}</windVelocity>
+            <frontal_area>0.0</frontal_area>
+            <lateral_area>0.06</lateral_area>
+            <lateral_length>1.2</lateral_length>
+            <waterVelocity>${waterType}</waterVelocity>
+        </buoyancy>
+    </link>
+
+    <link name="back_l_link">
+        <inertial>
+            <origin xyz="-0.595769 0.586109 0" rpy="0 0 0" />
+            <mass value="${body_mass}" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="1.4" iyz="0.0" izz="1.4"/>
+            <!-- <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" /> -->
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/back_l_link.dae" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/back_l_link.dae" />
+            </geometry>
+        </collision>
+
+        <buoyancy>
+            <compensation>${compensation}</compensation>
+            <origin xyz="-0.595769 0.586109 0"/>
+            <limit radius="0.1"/>
+            <damping rpy="20 20 20" xyz="20 40 50"/>
+            <windVelocity>${windType}</windVelocity>
+            <frontal_area>0.04</frontal_area>
+            <lateral_area>0.06</lateral_area>
+            <lateral_length>1.2</lateral_length>
+            <waterVelocity>${waterType}</waterVelocity>
+        </buoyancy>
+    </link>
+
+    <link name="back_r_link">
+        <inertial>
+            <origin xyz="-0.598943 -0.583017 0" rpy="0 0 0" />
+            <mass value="${body_mass}" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="1.4" iyz="0.0" izz="1.4"/>
+            <!-- <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" /> -->
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/back_r_link.dae" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/back_r_link.dae" />
+            </geometry>
+        </collision>
+
+        <buoyancy>
+            <compensation>${compensation}</compensation>
+            <origin xyz="-0.598943 -0.583017 0"/>
+            <limit radius="0.1"/>
+            <damping rpy="20 20 20" xyz="20 40 50"/>
+            <windVelocity>${windType}</windVelocity>
+            <frontal_area>0.04</frontal_area>
+            <lateral_area>0.06</lateral_area>
+            <lateral_length>1.2</lateral_length>
+            <waterVelocity>${waterType}</waterVelocity>
+        </buoyancy>
+    </link>
+
+    <link name="front_l_link">
+        <inertial>
+            <origin xyz="0.502699 0.574624 0" rpy="0 0 0" />
+            <mass value="${body_mass}" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="1.4" iyz="0.0" izz="1.4"/>
+            <!-- <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" /> -->
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/front_l_link.dae" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/front_l_link.dae" />
+            </geometry>
+        </collision>
+
+        <buoyancy>
+            <compensation>${compensation}</compensation>
+            <origin xyz="0.502699 0.574624 0"/>
+            <limit radius="0.1"/>
+            <damping rpy="20 20 20" xyz="20 40 50"/>
+            <windVelocity>${windType}</windVelocity>
+            <frontal_area>0.04</frontal_area>
+            <lateral_area>0.06</lateral_area>
+            <lateral_length>1.2</lateral_length>
+            <waterVelocity>${waterType}</waterVelocity>
+        </buoyancy>
+    </link>
+
+    <link name="front_r_link">
+        <inertial>
+            <origin xyz="0.495744 -0.576683 0" rpy="0 0 0" />
+            <mass value="${body_mass}" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="1.4" iyz="0.0" izz="1.4"/>
+            <!-- <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" /> -->
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/front_r_link.dae" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/front_r_link.dae" />
+            </geometry>
+        </collision>
+
+        <buoyancy>
+            <compensation>${compensation}</compensation>
+            <origin xyz="0.495744 -0.576683 0"/>
+            <limit radius="0.1"/>
+            <damping rpy="20 20 20" xyz="20 40 50"/>
+            <windVelocity>${windType}</windVelocity>
+            <frontal_area>0.04</frontal_area>
+            <lateral_area>0.06</lateral_area>
+            <lateral_length>1.2</lateral_length>
+            <waterVelocity>${waterType}</waterVelocity>
+        </buoyancy>
+    </link>
+
+    <joint name="back_l_joint" type="revolute">
+        <origin xyz="${-0.586109*scale} ${-0.595769*scale} 0" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="back_l_link" />
+        <axis xyz="1 0 0" />
+        <limit lower="0" upper="0" effort="50" velocity="5" />
+        <dynamics damping="1.0"/>
+    </joint>
+
+    <joint name="back_r_joint" type="revolute">
+        <origin xyz="${0.583017*scale} ${-0.598943*scale} 0" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="back_r_link" />
+        <axis xyz="1 0 0" />
+        <limit lower="0" upper="0" effort="50" velocity="5" />
+        <dynamics damping="1.0"/>
+    </joint>
+
+    <joint name="front_l_joint" type="revolute">
+        <origin xyz="${-0.574624*scale} ${0.502699*scale} 0" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="front_l_link" />
+        <axis xyz="1 0 0" />
+        <limit lower="0" upper="0" effort="50" velocity="5" />
+        <dynamics damping="1.0"/>
+    </joint>
+
+    <joint name="front_r_joint" type="revolute">
+        <origin xyz="${0.576683*scale} ${0.495744*scale} 0" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="front_r_link" />
+        <axis xyz="1 0 0" />
+        <limit lower="0" upper="0" effort="50" velocity="5" />
+        <dynamics damping="1.0"/>
+    </joint>
+
+    <link name="sail">
+        <inertial>
+            <origin xyz="-0.75 0 0.025163" rpy="0 0 0" />
+            <mass value="${sail_mass}" />
+            <!-- <inertia ixx="5.4967" ixy="9.42E-07" ixz="-2.1494E-05" iyy="5.0279" iyz="0.20362" izz="0.46943" /> -->
+            <inertia ixx="0.4967" ixy="0" ixz="0.5208" iyy="0" iyz="0" izz="0.06943" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/sail_link.dae" scale="0.7 0.7 0.7"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.93333 0.81961 0.75294 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/sail_link.dae" scale="0.7 0.7 0.7"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="sail_joint" type="revolute">
+        <origin xyz="0.61343 0 1.545" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="sail" />
+        <axis xyz="0 0 1" />
+        <limit lower="${-PI*0.5}" upper="${PI*0.5}" effort="100" velocity="70" />
+        <dynamics damping="1.0"/>
+    </joint>
+
+    <link name="rudder">
+        <inertial>
+            <origin xyz="-0.14361 0 0.40519" rpy="0 0 0" />
+            <mass value="${rudder_mass}" />
+            <inertia ixx="0.05" ixy="0.0" ixz="0.0" iyy="0.05" iyz="0.0" izz="0.005" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/rudder_link.dae" />
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/cuhksz/rudder_link.dae" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="rudder_joint" type="revolute">
+        <origin xyz="-0.721338 0 -0.5615" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="rudder" />
+        <axis xyz="0 0 1" />
+        <limit lower="${-PI*0.5}" upper="${PI*0.5}" effort="100" velocity="5" />
+        <dynamics damping="1.0"/>
+    </joint>
+
+    <link name="keel">
+        <inertial>
+            <mass value="30" />
+            <inertia ixx="0.4708" ixy="0.0" iyy="0.5208" ixz="0.0" iyz="0.0" izz="0.0508"/>
+        </inertial>
+        <collision name="collision">
+            <geometry>
+                <box size="0.25 0.02 0.5" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </collision>
+        <visual name="visual">
+            <geometry>
+                <mesh filename="package://usv_sim/meshes/simpleHull3/box.dae" scale="0.25 0.02 0.5"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </visual>
+    </link>
+
+    <joint name="keel_joint" type="revolute">
+        <parent link="base_link"/>
+        <child link="keel"/>
+        <origin xyz="0 0 -0.35" rpy="0 0 0"/>
+        <dynamics damping="1.0"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="30" velocity="5" lower="0" upper="0" />
+    </joint>
+
+    <link name="front_r_cam_link">
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+        </inertial>
+        <visual>
+            <origin xyz=" 0 0 0 " rpy="0 0 0" />
+            <geometry>
+                <box size="0.01 0.04 0.04" />
+            </geometry>
+            <material name="Black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.01 0.04 0.04" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="front_r_cam_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="front_r_cam_link"/>
+        <origin xyz="0.3 -0.2 0.5" rpy="0 -0.52 0.52" />
+    </joint>
+
+    <!-- Plugin list -->
+    <gazebo>
+        <plugin name="usv_sail_plugin" filename="libfoil_dynamics_plugin.so">
+            <link_name>sail</link_name>
+            <link_type>sail</link_type>
+            <joint_name>sail_joint</joint_name>
+            <cp>0 0 0</cp>
+            <area>1.44</area>
+            <upward>0 1 0</upward>
+            <forward>-1 0 0</forward>
+            <a0>0</a0>
+            <cla>3.0</cla>
+            <cda>3.0</cda>
+            <cma>-1.8</cma>
+            <cla_stall>-3.85</cla_stall>
+            <cda_stall>-0.9233984055</cda_stall>
+            <cma_stall>0</cma_stall>
+            <alpha_stall>0.785</alpha_stall>
+            <fluid_density>1.2041</fluid_density>
+            <fluidVelocity>${windType}</fluidVelocity>
+        </plugin>
+
+        <plugin name="usv_sail_plugin" filename="libfoil_dynamics_plugin.so">
+            <link_type>rudder</link_type>
+            <link_name>rudder</link_name>
+            <joint_name>rudder_joint</joint_name>
+            <cp>0 0 0</cp>
+            <area>1</area>
+            <upward>0 1 0</upward>
+            <forward>1 0 0</forward>
+            <a0>0</a0>
+            <cla>0.8</cla>
+            <cda>0.3</cda>
+            <cla_stall>-0.85</cla_stall>
+            <cda_stall>-0.3233984055</cda_stall>
+            <alpha_stall>0.785</alpha_stall>
+            <fluid_density>1000</fluid_density>
+            <fluidVelocity>${waterType}</fluidVelocity>
+        </plugin>
+
+        <plugin name="usv_sail_plugin" filename="libfoil_dynamics_plugin.so">
+            <link_type>keel</link_type>
+            <a0>0</a0>
+            <cla>10.0</cla>
+            <cda>8.0</cda>
+            <alpha_stall>0.785</alpha_stall>
+            <cla_stall>-10.0</cla_stall>
+            <cda_stall>-5.0</cda_stall>
+            <cp>0 0 0</cp>
+            <area>1.0</area>
+            <fluid_density>1000</fluid_density>
+            <forward>1 0 0</forward>
+            <upward>0 1 0</upward>
+            <link_name>keel</link_name>
+            <fluidVelocity>${waterType}</fluidVelocity>
+        </plugin>
+
+        <plugin name="freefloating_gazebo_control" filename="libfreefloating_gazebo_control.so">
+            <switchService>switch</switchService>
+            <updateRate>100</updateRate>
+            <link>base_link</link>
+        </plugin>
+    </gazebo>
+
+    <gazebo reference="front_r_cam_link">
+        <sensor type="camera" name="front_r_cam">
+            <update_rate>30.0</update_rate>
+            <camera name="front_r_cam">
+                <horizontal_fov>1.3962634</horizontal_fov>
+                <image>
+                    <width>800</width>
+                    <height>800</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.02</near>
+                    <far>300</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+            <plugin name="gazebo_camera" filename="libgazebo_ros_camera.so">
+                <frameName>front_r_cam_link</frameName>
+                <cameraName>/front_r_cam</cameraName>
+                <imageTopicName>image_raw</imageTopicName>
+                <cameraInfoTopicName>front_r_cam_info</cameraInfoTopicName>
+                <alwaysOn>true</alwaysOn>
+                <updateRate>0.0</updateRate>
+                <hackBaseline>0.07</hackBaseline>
+                <distortionK1>0.0</distortionK1>
+                <distortionK2>0.0</distortionK2>
+                <distortionK3>0.0</distortionK3>
+                <distortionT1>0.0</distortionT1>
+                <distortionT2>0.0</distortionT2>
+            </plugin>
+        </sensor>
+    </gazebo>
+</robot>

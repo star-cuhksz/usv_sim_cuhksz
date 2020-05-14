@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE UWSimScene SYSTEM "UWSimScene.dtd">
+
+<UWSimScene>
+    <oceanState>
+        <windx> 1 </windx>
+        <windy> 0.5 </windy>
+        <windSpeed> 2.2 </windSpeed>
+        <depth> 10000 </depth>
+        <reflectionDamping> 0.35 </reflectionDamping>
+        <reflection>0</reflection>
+        <waveScale> 1e-7 </waveScale>
+        <isNotChoppy> 0 </isNotChoppy>
+        <choppyFactor> -2.5 </choppyFactor>
+        <crestFoamHeight> 2.2 </crestFoamHeight>
+        <oceanSurfaceHeight> 1 </oceanSurfaceHeight>
+        <fog>
+            <density> 0.1 </density>
+            <color>
+                <r>0.017</r>
+                <g>0.027</g>
+                <b>0.079</b>
+            </color>
+        </fog>
+        <color>
+            <r>0.55</r>
+            <g>0.45</g>
+            <b>0.33</b>
+        </color>
+        <attenuation>
+            <r>0.15</r>
+            <g>0.15 </g>
+            <b> 0.05 </b>
+        </attenuation>
+    </oceanState>
+
+    <simParams>
+        <disableShaders> 0 </disableShaders>
+        <resw> 1152 </resw>
+        <resh> 864 </resh>
+        <showTrajectory>
+            <target>sailboat_cuhksz</target>
+        </showTrajectory>
+        <groundTruth>
+            <imageLocation>/home/ksss/Desktop/_imgs/</imageLocation>
+            <type>save</type>
+            <gt_shader>0</gt_shader>
+        </groundTruth>
+    </simParams>
+
+    <camera>
+        <freeMotion> 1 </freeMotion>
+        <objectToTrack>sailboat_cuhksz/base_link</objectToTrack>
+        <fov> 60 </fov>
+        <aspectRatio> 1.33 </aspectRatio>
+        <near> 1 </near>
+        <far> 10000 </far>
+        <position>
+            <x>230</x>
+            <y>95 </y>
+            <z>15 </z>
+        </position>
+        <lookAt>
+            <x>245</x>
+            <y>95 </y>
+            <z>5 </z>
+        </lookAt>
+    </camera>
+
+    <vehicle>
+        <name>sailboat_cuhksz</name>
+        <file>urdf/sailboat_cuhksz_uwsim.urdf</file>
+        <jointValues>
+            <joint> 0 </joint>
+            <joint> 0 </joint>
+        </jointValues>
+        <position>
+            <x>-240</x>
+            <y>95</y>
+            <z>1.13</z>
+        </position>
+        <orientation>
+            <r>0</r>
+            <p>0</p>
+            <y>0</y>
+        </orientation>
+
+        <virtualCamera>
+            <name>center_r_cam</name>
+            <relativeTo>base_link</relativeTo>
+            <resw>1024</resw>
+            <resh>768</resh>
+            <position>
+                <x>480.6</x>
+                <y>-0.8</y>
+                <z>0.5</z>
+            </position>
+            <orientation>
+                <r>2.09</r>
+                <p>0</p>
+                <y>0</y>
+            </orientation>
+        </virtualCamera>
+
+        <virtualCamera>
+            <name>center_l_cam</name>
+            <relativeTo>base_link</relativeTo>
+            <resw>1024</resw>
+            <resh>768</resh>
+            <position>
+                <x>480.6</x>
+                <y>0.8</y>
+                <z>0.5</z>
+            </position>
+            <orientation>
+                <r>2.09</r>
+                <p>0</p>
+                <y>3.141</y>
+            </orientation>
+        </virtualCamera>
+
+        <virtualCamera>
+            <name>front_r_cam</name>
+            <relativeTo>base_link</relativeTo>
+            <resw>1024</resw>
+            <resh>768</resh>
+            <position>
+                <x>481.4</x>
+                <y>-0.8</y>
+                <z>0.5</z>
+            </position>
+            <orientation>
+                <r>2.09</r>
+                <p>0</p>
+                <y>1.036</y>
+            </orientation>
+        </virtualCamera>
+
+        <virtualCamera>
+            <name>front_l_cam</name>
+            <relativeTo>base_link</relativeTo>
+            <resw>1024</resw>
+            <resh>768</resh>
+            <position>
+                <x>481.4</x>
+                <y>0.8</y>
+                <z>0.5</z>
+            </position>
+            <orientation>
+                <r>2.09</r>
+                <p>0</p>
+                <y>2.095</y>
+            </orientation>
+        </virtualCamera>
+    </vehicle>
+
+    <vehicle>
+        <name>total</name>
+        <file>urdf/total_uwsim.urdf</file>
+        <position>
+            <x> 240</x>
+            <y> 95 </y>
+            <z> 1.13 </z>
+        </position>
+        <orientation>
+            <r>0</r>
+            <p>0</p>
+            <y>0</y>
+        </orientation>
+    </vehicle>
+
+    <vehicle>
+        <name>buoy1</name>
+        <file>urdf/buoy_uwsim.urdf</file>
+        <position>
+            <x> 275</x>
+            <y> 95 </y>
+            <z> 1 </z>
+        </position>
+        <orientation>
+            <r>0</r>
+            <p>0</p>
+            <y>0</y>
+        </orientation>
+    </vehicle>
+
+    <object>
+        <name>terrain</name>
+        <file>terrain/diluvio5/novo4.obj</file>
+        <position>
+            <x>0</x>
+            <y>558</y>
+            <z>0</z>
+        </position>
+        <orientation>
+            <r>0</r>
+            <p>0</p>
+            <y>0</y>
+        </orientation>
+    </object>
+
+    <rosInterfaces>
+        <ROSOdomToPAT>
+            <topic>/buoy1/state</topic>
+            <vehicleName>buoy1</vehicleName>
+        </ROSOdomToPAT>
+
+        <ROSOdomToPAT>
+            <topic>/sailboat_cuhksz/state</topic>
+            <vehicleName>sailboat_cuhksz</vehicleName>
+        </ROSOdomToPAT>
+
+        <ROSJointStateToArm>
+            <topic>/sailboat_cuhksz/joint_states</topic>
+            <vehicleName>sailboat_cuhksz</vehicleName>
+        </ROSJointStateToArm>
+
+        <VirtualCameraToROSImage>
+            <cameraName>front_l_cam</cameraName>
+            <imageTopic>/uwsim/front_l_cam_topic</imageTopic>
+            <infoTopic>/uwsim/front_l_cam_info</infoTopic>
+        </VirtualCameraToROSImage>
+
+        <VirtualCameraToROSImage>
+            <cameraName>front_r_cam</cameraName>
+            <imageTopic>/uwsim/front_r_cam_topic</imageTopic>
+            <infoTopic>/uwsim/front_r_cam_info</infoTopic>
+        </VirtualCameraToROSImage>
+
+        <VirtualCameraToROSImage>
+            <cameraName>center_l_cam</cameraName>
+            <imageTopic>/uwsim/center_l_cam_topic</imageTopic>
+            <infoTopic>/uwsim/center_l_cam_info</infoTopic>
+        </VirtualCameraToROSImage>
+
+        <VirtualCameraToROSImage>
+            <cameraName>center_r_cam</cameraName>
+            <imageTopic>/uwsim/center_r_cam_topic</imageTopic>
+            <infoTopic>/uwsim/center_r_cam_info</infoTopic>
+        </VirtualCameraToROSImage>
+    </rosInterfaces>
+</UWSimScene>

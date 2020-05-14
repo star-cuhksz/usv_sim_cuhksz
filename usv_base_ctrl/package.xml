@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <name>usv_base_ctrl</name>
+  <version>0.0.0</version>
+  <description>Contains the velocity control of multiple robots.</description>
+
+  <maintainer email="guge4230@gmail.com">YiKang Gu</maintainer>
+
+  <license>TODO</license>
+
+  <url type="website">https://github.com/yikangGu/usv_sim_cuhksz</url> 
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

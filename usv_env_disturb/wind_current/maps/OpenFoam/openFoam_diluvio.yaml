@@ -1,0 +1,16 @@
+fields:
+  [
+    "/home/ksss/Documents/Backup/USV/Dataset/diluvio/p0.0.csv",
+    "/home/ksss/Documents/Backup/USV/Dataset/diluvio/p0.1.csv",
+    "/home/ksss/Documents/Backup/USV/Dataset/diluvio/p0.2.csv",
+    "/home/ksss/Documents/Backup/USV/Dataset/diluvio/p0.3.csv",
+    "/home/ksss/Documents/Backup/USV/Dataset/diluvio/p0.4.csv",
+    "/home/ksss/Documents/Backup/USV/Dataset/diluvio/p0.5.csv",
+    "/home/ksss/Documents/Backup/USV/Dataset/diluvio/p0.6.csv",
+    "/home/ksss/Documents/Backup/USV/Dataset/diluvio/p0.7.csv",
+    "/home/ksss/Documents/Backup/USV/Dataset/diluvio/p0.8.csv"
+  ]
+size: [136, 57, 9]
+origin: [0, 0, -20]
+cellsize: [10, 10, 10]
+time: 8

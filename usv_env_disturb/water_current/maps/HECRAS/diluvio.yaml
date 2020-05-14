@@ -1,0 +1,12 @@
+filename: /home/ksss/Documents/Backup/USV/Dataset/t3/t3.p01.hdf
+ref: [477092.4903, 6675824.0]
+nodeCoordinate: "FacePoints Coordinate"
+nodeNameX: "Node X Vel"
+nodeNameY: "Node Y Vel"
+resolution: 1
+origin: [0, 0, 0.0]
+width: 1341
+height: 558
+startTime: 100
+mapTorviz: 1
+showVehicleOnMap: 1
