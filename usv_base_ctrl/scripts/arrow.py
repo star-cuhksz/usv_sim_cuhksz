@@ -1,3 +1,4 @@
+#!usr/bin/python
 from geometry_msgs.msg import Point, Quaternion, Pose, Twist
 from nav_msgs.msg import Odometry
 
@@ -10,7 +11,7 @@ import rospy
 import math
 import tf
 
-sbc = SailboatController("sailboat_cuhksz")
+sbc = SailboatController()
 
 OriginState = ModelState()
 OriginState.model_name = 'arrow'
@@ -35,7 +36,6 @@ def Arrow():
         try:
             state = sbc.get_state()
             boat_x, boat_y = state.pose.pose.position.x, state.pose.pose.position.y
-            print(boat_x, boat_y)
             OriginPoint = (boat_x, boat_y, 6)
             OriginState.pose = Pose(
                 Point(*OriginPoint), Quaternion(*quaternion))

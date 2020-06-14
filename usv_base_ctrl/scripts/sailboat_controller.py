@@ -20,7 +20,7 @@ arg = argparse.ArgumentParser("For Sailboat Controller")
 
 class SailboatController():
     def __init__(self, namespace="sailboat_cuhksz",
-                 origin=(240, 95, 1.13),
+                 origin=(3, 0, 1.13),
                  quaternion=(0, 0, 0, 1)):
         self.OriginPoint = origin
         self.OriginState = ModelState()
@@ -145,9 +145,9 @@ if __name__ == '__main__':
     arg.add_argument('-n', '--namespace', type=str,
                      default='sailboat_cuhksz', help="Robot's Name")
     arg.add_argument('-o', '--origin', type=float,
-                     default=(240, 95, 1.13), help='Set The Origin')
+                     default=(3, 0, 1.13), help='Set The Origin')
     arg.add_argument('-g', '--goal', type=tuple,
-                     default=(35, 0, False), help='Set The Goal, (x, y, is absolute coordinates?)')
+                     default=(25, 0, False), help='Set The Goal, (x, y, is absolute coordinates?)')
     arg.add_argument('-q', '--quaternion', type=float,
                      default=(0., 0., 0., 1.), help='Set The Quaternion of Robot when start')
     arg.add_argument('-r', '--reset', type=bool,

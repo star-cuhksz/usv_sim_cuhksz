@@ -33,7 +33,7 @@
             <arg name="spawnGazebo" value="$(arg spawnGazebo)"/>
             <arg name="namespace" value="$(arg namespace)"/>
             <arg name="windType" value="global"/>
-            <arg name="waterType" value="global"/>
+            <arg name="waterType" value="local"/>
         </include>
 
         <!-- recording experiment -->
@@ -43,6 +43,7 @@
         <!-- <include file="$(find usv_sim_rviz)/launch/navigation_rviz.launch" /> -->
         <!-- <node name="water_map" pkg="water_current" type="water_HECRAS.py" args="$(find water_current)/maps/HECRAS/diluvio.yaml" output="screen" required="true"/> -->
         <!-- <node name="wind_map" pkg="wind_current" type="windOpenFoam.py" args="$(find wind_current)/maps/OpenFoam/openFoam_diluvio.yaml" output="screen" required="true"/> -->
+        <!-- <node name="arrow" pkg="usv_base_ctrl" type="arrow.py"/> -->
     </group>
 
     <!-- parse launch file -->

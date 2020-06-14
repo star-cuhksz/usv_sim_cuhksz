@@ -7,7 +7,11 @@ import tf
 from sailboat_controller import SailboatController
 
 sbc = SailboatController("sailboat_cuhksz")
-sbc.OriginState.pose = Pose(Point(*sbc.OriginPoint), Quaternion(0, 0, 0, 1))
+
+wind_x, wind_y = rospy.get_param(
+    '/uwsim/wind/x'), rospy.get_param('/uwsim/wind/y')
+quater = tf.transformations.quaternion_from_euler(0, 0, -1.308996939)
+sbc.OriginState.pose = Pose(Point(*sbc.OriginPoint), Quaternion(*quater))
 f = sbc.createFile("fsf.txt")
 
 
@@ -28,6 +32,7 @@ def get_sail_position(current_heading):
     wind_dir = global_dir - current_heading
     wind_dir = angle_saturation(wind_dir+180)
     sail_angle = math.radians(wind_dir)/2
+    sail_angle = 0.37
     if math.degrees(sail_angle) < -80:
         sail_angle = -sail_angle
 
@@ -71,7 +76,7 @@ def model(state, goal):
 
     print "rP, sP", rP, sP
 
-    sbc.writeFile(f, currentYaw, rp, sP)
+    sbc.writeFile(f, currentYaw, rP, sP)
 
     pred_rudder = [rP, 0, 0]
     pred_sail = [sP, 0, 0]
